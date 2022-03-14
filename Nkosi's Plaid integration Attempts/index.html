@@ -1,0 +1,128 @@
+<!-- index.html – Links a sample bank account and renders balance information associated with the account. -->
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+  </head>
+  <title>Plaid | Minimal Quickstart</title>
+  <body>
+    <div id ="root">
+   
+      <button
+        type="button"
+        id="link-account"
+        class="btn btn-primary btn-dark btn-lg"
+        style="
+          border: 1px solid black;
+          border-radius: 5px;
+          background: black;
+          height: 48px;
+          width: 155px;
+          margin-top: 5; 
+          margin-left: 10;
+          color: white;
+          font-size: 18px;
+        "
+      >
+        <strong>Link account</strong>
+      </button>
+      <pre
+        id="response"
+        style="
+          top: 60;
+          margin-left: 10;
+          bottom: 0;
+          position: fixed;
+          overflow-y: scroll;
+          overflow-x: hidden;
+          font-size: 14px;
+        "
+      
+      ></pre>
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+      <script src="https://cdn.plaid.com/link/v2/stable/link-initialize.js"></script>
+      <script>
+        (async ($) => {
+          // Grab a Link token to initialize Link
+          const createLinkToken = async () => {
+            const res = await fetch("https://birdboombox.com/api/create_link_token");
+            const data = await res.json();
+            const linkToken = data.link_token;
+            localStorage.setItem("link_token", linkToken);
+            return linkToken;
+          };
+
+          // Initialize Link
+          const handler = Plaid.create({
+            token: await createLinkToken(),
+            onSuccess: async (publicToken, metadata) => {
+              const res = await fetch("https://birdboombox.com/api/exchange_public_token", {
+                method: "POST",
+                body: JSON.stringify({ public_token: publicToken }),
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              });
+              const data = await res.json();
+              const accessToken = data.access_token;
+              localStorage.setItem("access_token", accessToken);
+              await getBalance();
+            },
+            onEvent: (eventName, metadata) => {
+              console.log("Event:", eventName);
+              console.log("Metadata:", metadata);
+            },
+            onExit: (error, metadata) => {
+              console.log(error, metadata);
+            },
+          });
+
+          // Start Link when button is clicked
+          const linkAccountButton = document.getElementById("link-account");
+          linkAccountButton.addEventListener("click", (event) => {
+            handler.open();
+          });
+        })(jQuery);
+
+        // Retrieves balance information
+        const getBalance = async function () {
+          const response = await fetch("https://birdboombox.com/api/getBalance", {
+            method: "POST",
+            body: JSON.stringify({ access_token: localStorage.getItem("access_token") }),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+          const data = await response.json();
+
+          //Render response data
+          const pre = document.getElementById("response");
+          pre.textContent = JSON.stringify(data, null, 2);
+          pre.style.background = "#F6F6F6";
+        };
+
+        // Check whether account is connected
+        const getStatus = async function () {
+          const account = await fetch("https://birdboombox.com/api/is_account_connected", {
+            method: "POST",
+            body: JSON.stringify({ access_token: localStorage.getItem("access_token") }),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+          const connected = await account.json();
+          if (connected.status == true) {
+            getBalance();
+          }
+        };
+
+        getStatus();
+      </script>
+    </div>
+  </body>
+</html>
