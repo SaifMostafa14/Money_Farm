@@ -1,10 +1,15 @@
 /* from: https://w3codepen.com/html-css-login-form-page/*/
 
-
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,800');
 
 * {
     box-sizing: border-box;
+}
+.body{
+    height: 120vh;
+    width: 98.89vw;
+    background-color: #20bf55;
+    background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
 }
 
 body {
@@ -21,6 +26,10 @@ body {
 h1 {
     font-weight: bold;
     margin: 0;
+}
+
+#Signup-h1 {
+    margin-top: 25px;
 }
 
 p {
@@ -107,7 +116,18 @@ input {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
 #loginbtn:hover {
+    background-color: rgb(253, 253, 253);
+    color: #16ba83;
+}
+
+#signup-btn {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+#signup-btn:hover {
     background-color: rgb(253, 253, 253);
     color: #16ba83;
 }

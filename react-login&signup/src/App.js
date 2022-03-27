@@ -2,6 +2,8 @@ import React, {useState} from 'react'
 import './App.css';
 import LoginPage from './LoginPage'
 import SignupPage from './SignupPage'
+import LandingPage from "./LandingPage";
+import {Routes, Route, Link, BrowserRouter} from "react-router-dom";
 
 
 function App() {
@@ -35,11 +37,15 @@ function App() {
         // </div>
         // <LoginPage/>
 
-        <LoginPage/>
-        // <SignupPage/>
+        <BrowserRouter>
+            <LandingPage/>
+            <Routes>
+                <Route exact path="/LoginPage" element={<LoginPage/>}/>
+                <Route exact path="/SignupPage" element={<SignupPage/>}/>
+            </Routes>
+        </BrowserRouter>
+
     )
 }
 
 export default App;
-
-

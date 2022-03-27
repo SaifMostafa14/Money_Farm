@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {Link} from "react-router-dom";
-// import {Link} from 'react-router-dom';
+
 
 export default function SignupPage({Login, error}) {
     // const [details, setDetails] = useState({name: "", email: "", password: "",});
@@ -12,27 +12,24 @@ export default function SignupPage({Login, error}) {
     //
     // }
 
-    return (
+    return (<>
         <body>
         <div className="container" id="container">
             <div className="form-container log-in-container">
                 <form action="#">
-                    <h1>Sign Up</h1>
+                    <h1 id="Signup-h1">Sign Up</h1>
                     <div className="input-field">
                         <input type="text" placeholder="First name"/>
                         <input type="text" placeholder="Last name"/>
-                        <input type="text" placeholder="Username"/>
+                        {/*<input type="text" placeholder="Username"/>*/}
                         <input type="email" placeholder="Email"/>
                         <input type="password" placeholder="Password"/>
                     </div>
                     {/*<Link to="./LoginPage"></Link>*/}
-                    <button id="loginbtn">Sign Up</button>
-                    {/*<span>-----------OR-----------</span>*/}
-                    {/*<div className="social-container">*/}
-                    {/*    <a href="#" className="social"><i className="fa fa-facebook fa-2x"/></a>*/}
-                    {/*    <a href="#" className="social"><i className="fab fa fa-twitter fa-2x"/></a>*/}
-                    {/*</div>*/}
-                    {/*<a href="#">Forgot your password?</a>*/}
+                    {/*<button id="loginbtn">Sign Up</button>*/}
+                    <Link to="/SignupPage">
+                        <button id="signup-btn">Sign Up</button>
+                    </Link>
                 </form>
             </div>
 
@@ -45,8 +42,10 @@ export default function SignupPage({Login, error}) {
                                 <h2>Welcome to GreenPocket</h2>
                                 <p id="p-signup">Already have an account?</p>
                                 {/*<Link to="./SignupPage"></Link>*/}
-                                <button id="btn-signup">Log in</button>
-                                {/*<a href="#" className="btn btn-white btn-success">Sign Up</a>*/}
+                                {/*<button id="btn-signup">Log in</button>*/}
+                                <Link to="/LoginPage">
+                                    <button id="btn-signup">Log in</button>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -54,5 +53,5 @@ export default function SignupPage({Login, error}) {
             </div>
         </div>
         </body>
-    )
+    </>)
 }
