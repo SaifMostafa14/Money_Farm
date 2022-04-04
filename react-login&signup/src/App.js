@@ -38,8 +38,8 @@ function App() {
         // <LoginPage/>
 
         <BrowserRouter>
-            <LandingPage/>
             <Routes>
+                <Route exact path="/" element={<LandingPage/>}/>
                 <Route exact path="/LoginPage" element={<LoginPage/>}/>
                 <Route exact path="/SignupPage" element={<SignupPage/>}/>
             </Routes>
