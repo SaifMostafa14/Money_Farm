@@ -1,0 +1,50 @@
+#spending-css {
+    background-color: #20bf55;
+    background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
+    background-repeat: no-repeat;
+    height: 100%;
+}
+
+#spending-barr {
+
+    margin-top: 110px;
+    border: #000000 solid;
+    background-color: white;
+    width: 80%;
+    margin-left: 150px;
+
+    border-radius: 30px;
+
+}
+
+#spending-pie {
+    margin-top: 110px;
+    border: #000000 solid;
+    background-color: rgb(58, 56, 56);
+    width: 80%;
+    margin-left: 150px;
+    border-radius: 30px;
+
+}
+
+#spending-card {
+    background-color: #262e27;
+    height: 150px;
+    width: 350px;
+    margin-top: 100px;
+    margin-left: 500px;
+    border-radius: 30px;
+    text-align: center;
+    padding-top: 20px;
+    font-size: 30px;
+}
+
+#spending-p {
+    color: white;
+}
+
+#spending-h1 {
+    color: white;
+}
+
+
