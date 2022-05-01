@@ -150,23 +150,23 @@ function enterData() {
     const data = [
         {
             name: 'Food/Eating Out',
-            pv: (globalFood * -1),
+            spending: (globalFood * -1),
         },
         {
             name: 'Groceries',
-            pv: (globalShopping),
+            spending: (globalShopping),
         },
         {
             name: 'Transportation',
-            pv: (globalTravel),
+            spending: (globalTravel),
         },
         {
             name: 'Entertainment',
-            pv: globalFun,
+            spending: globalFun,
         },
         {
             name: 'Misc.',
-            pv: globalMisc,
+            spending: globalMisc,
         },
     ];
 
@@ -219,7 +219,7 @@ function bara(props) {
 
                 </div>
                 <div id='spending-barr'>
-                    <ResponsiveContainer classNmae='content-align-center' aspect={2}>
+                    <ResponsiveContainer classNmae='content-align-center' aspect={1.5}>
                         <BarChart
                             width={250}
                             height={80}
@@ -230,14 +230,14 @@ function bara(props) {
                                 left: 20,
                                 bottom: 5,
                             }}
-                            barSize={20}
+                            barSize={30}
                         >
                             <XAxis dataKey="name" scale="point" padding={{left: 10, right: 10}}/>
                             <YAxis/>
                             <Tooltip/>
                             <Legend/>
                             <CartesianGrid strokeDasharray="3 3"/>
-                            <Bar dataKey="pv" fill="green" background={{fill: 'gray'}}/>
+                            <Bar dataKey="spending" fill="green" background={{fill: 'gray'}}/>
                         </BarChart>
                     </ResponsiveContainer>
                 </div>
