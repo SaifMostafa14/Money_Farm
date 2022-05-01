@@ -1,9 +1,9 @@
 import './spendingpage.css';
-import * as ReactBootStrap from "react-bootstrap";
+import * as B from 'react-bootstrap';
 import { LineChar, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart,
     Pie,
     Cell, } from 'recharts';
-import {Container, Navbar} from "react-bootstrap";
+import {Container, Navbar, Table, Card} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import React from "react";
 
