@@ -1,5 +1,5 @@
 # GreenPocket
-### CSCI-321: Software Development II section 1, Due date: 4/2/2022
+### CSCI-321: Software Development II section 1, Due date: 5/2/2022
 
 * Frontend: React
 * Backend: JS, Mongodb
@@ -17,8 +17,14 @@
 
 
 ### Developers:
-* Abdullah Alsubhi
-*  Nkosi
+* Abdullah Alsubhi || Landing - Signup - Login
+*  Nkosi || 
 * Saif Mostafa
 * Abdulaziz Alzhriny
 * Mohammed Almutiary
+
+### Resources:
+* [linear-gradient](https://www.eggradients.com/linear-gradients)
+* [Bootstrap](https://getbootstrap.com/docs)
+* [fontawesome](https://fontawesome.com/)
+* [w3codepen](https://w3codepen.com)
