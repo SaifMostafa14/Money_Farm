@@ -221,8 +221,8 @@ function bara(props) {
                 <div id='spending-barr'>
                     <ResponsiveContainer classNmae='content-align-center' aspect={2}>
                         <BarChart
-                            width={300}
-                            height={100}
+                            width={250}
+                            height={80}
                             data={enterData()}
                             margin={{
                                 top: 5,

@@ -15,14 +15,28 @@
 /*    background-color: #20bf55;*/
 /*    background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);*/
 /*}*/
-
 #landing-body {
-    height: 120vh;
+    height: 100vh;
     width: 98.89vw;
     background-color: #20bf55;
     background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
+
+.btn-tag {
+    padding: 10px;
+    margin: 20px;
+}
+/*#landing-body {*/
+/*    height: 120vh;*/
+/*    width: 98.89vw;*/
+/*    background-color: #20bf55;*/
+/*    background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);*/
+
+/*}*/
 .landing-tag{
     background: #f3e0e2;
     display: flex;

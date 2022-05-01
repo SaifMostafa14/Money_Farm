@@ -5,15 +5,16 @@ import {Link} from "react-router-dom";
 export default function LandingPage() {
     return (
         <>
-        <body id='landing-body' className='box-all landing-tagy'>
-            <h1 id="landing-h1">Hello</h1>
+            <body id='landing-body' className=''>
+            <h1 id="landing-h1">Welcome to Green Pocket</h1>
             <Link to="/LoginPage">
-                <button className="button-tag">Log In</button>
+                <button className="btn btn-success btn-tag">Log In</button>
             </Link>
+            <span>-----------OR-----------</span>
             <Link to="/SignupPage">
-                <button className="button-tag">Sign Up</button>
+                <button className="btn btn-success btn-tag">Sign Up</button>
             </Link>
-        </body>
+            </body>
         </>
     )
 }

@@ -21,7 +21,7 @@ export default function LoginPage({Login, error}) {
                         <input className='input-tag' type="password" placeholder="Password"/>
                     </div>
 
-                    <Link to="/LoginPage">
+                    <Link to="/HomePage">
                         <button className="button-tag" id="loginbtn">Log In</button>
                     </Link>
                     <span>-----------OR-----------</span>
