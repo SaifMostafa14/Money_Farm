@@ -29,15 +29,14 @@
 // export default App;
 
 
-
 // import './BudgetPage.css';
-import React, { useState, useEffect, useRef } from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {Container, Alert, Navbar, NavItem} from 'react-bootstrap';
 import * as B from 'react-bootstrap';
 import BudgetList from './BudgetList';
 import SpendingList from './SpendingList';
 import SpendingPage from "./SpendingPage";
-import { usePlaidLink } from 'react-plaid-link';
+import {usePlaidLink} from 'react-plaid-link';
 
 import {
     BrowserRouter,
@@ -48,7 +47,8 @@ import {
 import LandingPage from "./LandingPage";
 import LoginPage from "./LoginPage";
 import SignupPage from "./SignupPage";
-import PlaidApp from "./PlaidApp";
+// import PlaidApp from "./PlaidApp";
+import HomePage from "./HomePage";
 
 const axios = require('axios');
 
@@ -60,7 +60,7 @@ function NavBar() {
 
         <Navbar bg="dark" variant="dark" className='nav justify-content-center'>
             <Container className=''>
-                <Navbar.Brand >GreenPocket</Navbar.Brand>
+                <Navbar.Brand>GreenPocket</Navbar.Brand>
 
                 <Link className=" nav nav-pills nav-fill nav-link" to="/budget">Budget</Link>
                 <Link className="nav nav-pills nav-fill nav-link" to="/connect_bank">Conect Bank</Link>
@@ -79,7 +79,7 @@ function ConnectBank(props) {
     return (
         <>
             <NavBar {...props} />
-            <Alert className="mb-2" variant ="success">
+            <Alert className="mb-2" variant="success">
                 <B.Alert.Heading>Start by Connecting Your Account</B.Alert.Heading>
                 <p>Click "Connect to Bank" to securely link your bank account to our budget app! </p>
             </Alert>
@@ -97,7 +97,7 @@ function ConnectBank(props) {
                     ) : null}
 
                 </>
-            ) : null }
+            ) : null}
         </>
     );
 };
@@ -113,9 +113,9 @@ function Spending(props) {
                 <div className="col-sm" id="budget-col">
 
 
-                    <SpendingPage />
+                    <SpendingPage {...props}/>
                 </div>
-            ) : null }
+            ) : null}
         </>
     );
 }
@@ -134,7 +134,7 @@ function Budget(props) {
 
                     <BudgetList {...props}/>
                 </div>
-            ) : null }
+            ) : null}
         </>
     );
 }
@@ -146,24 +146,31 @@ function App() {
 
     useEffect(() => {
         axios.get("https://birdboombox.com/api/create_link_token")
-            .then(response => { console.log(response); setLinkToken(response.data.link_token)});
+            .then(response => {
+                console.log(response);
+                setLinkToken(response.data.link_token)
+            });
     }, []);
 
-    const { open, ready } = usePlaidLink({
+    const {open, ready} = usePlaidLink({
         token: linkToken,
         onSuccess: (public_token, metadata) => {
             axios.post("https://birdboombox.com/api/exchange_public_token",
                 {"public_token": public_token})
-                .then(response => { setAccessToken(response.data.access_token) });
+                .then(response => {
+                    setAccessToken(response.data.access_token)
+                });
         },
     });
 
     const [balance, setBalance] = useState(null);
     useEffect(() => {
-        if(accessToken) {
+        if (accessToken) {
             axios.post("https://birdboombox.com/api/getBalance",
                 {"access_token": accessToken})
-                .then(response => { setBalance(response.data) });
+                .then(response => {
+                    setBalance(response.data)
+                });
         }
     }, [accessToken]);
 
@@ -171,10 +178,14 @@ function App() {
     const [endDate, setEndDate] = useState(null);
     const [transactions, setTransactions] = useState(null);
     const getTransactionsFunction = () => {
-        if(accessToken) {
+        if (accessToken) {
             axios.post("https://birdboombox.com/api/getTransactions",
                 {"access_token": accessToken, "start_date": startDate, "end_date": endDate})
-                .then(response => { if(! response.data.error) { setTransactions(response.data) }});
+                .then(response => {
+                    if (!response.data.error) {
+                        setTransactions(response.data)
+                    }
+                });
         }
     };
     return (
@@ -184,6 +195,7 @@ function App() {
                 <Route exact path="/" element={<LandingPage/>}/>
                 <Route exact path="/LoginPage" element={<LoginPage/>}/>
                 <Route exact path="/SignupPage" element={<SignupPage/>}/>
+                <Route exact path="/HomePage" element={<HomePage/>}/>
                 {/*<Route exact path="/PlaidApp" element={<PlaidApp/>}/>*/}
                 {/*<Route exact path="/SpendingPage" element={<SpendingPage/>}/>*/}
                 {/*<Route exact path="/BudgetList" element={<BudgetList/>}/>*/}

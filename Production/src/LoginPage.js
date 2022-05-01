@@ -6,7 +6,6 @@ import {Link} from "react-router-dom";
 
 export default function LoginPage({Login, error}) {
 
-
     return (<>
         <body className='login-body'>
         <div className="container" id="loginpage-container">
