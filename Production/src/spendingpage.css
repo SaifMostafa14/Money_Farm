@@ -3,7 +3,10 @@
     /*background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);*/
     /*background-repeat: no-repeat;*/
     height: 100%;
-    background-color: rgb(42, 100, 42);
+    /*background-color: rgb(42, 100, 42);*/
+}
+.spending-header{
+    margin-left: 225px;
 }
 
 #spending-barr {
@@ -12,8 +15,10 @@
     border: #000000 solid;
     background-color: white;
     width: 900px;
-    margin-left: 230px;
-
+    margin-left: 375px;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
     border-radius: 30px;
 
 }

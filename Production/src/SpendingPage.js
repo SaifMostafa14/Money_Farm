@@ -186,11 +186,11 @@ function bara (props) {
               {props.transactions ? (
 
         <div className="col-sm" id="budget-col">
-            <h4 className="content-align-center" id="getCategoryTotals" >
+            <h4 className="content-align-center spending-header" id="getCategoryTotals" >
                 {totalSum(props.balance, props.transactions)}
             </h4>
                 
-                <div  id='spending-barr'>
+                <div className='content-align-center' id='spending-barr'>
                 <ResponsiveContainer className='content-align-center' aspect={1.52}>
                         <BarChart
                             width={250}

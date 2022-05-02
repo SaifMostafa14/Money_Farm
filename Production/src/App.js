@@ -58,14 +58,14 @@ function NavBar() {
 
     return (
 
-        <Navbar  variant="dark" className='nav justify-content-center' id='navbar-custom'>
+        <Navbar variant="dark" className='nav justify-content-center' id='navbar-custom'>
             <Container className=''>
                 <Navbar.Brand href="/connect_bank">
-                
-                    <i className="bi bi-wallet2" id="bi-cons" fill="pink" style={{ fontSize: 30}} > 
+
+                    <i className="bi bi-wallet2" id="bi-cons" fill="pink" style={{fontSize: 30}}>
                     </i>
-                  
-                   GreenPocket</Navbar.Brand>
+
+                    GreenPocket</Navbar.Brand>
 
                 <Link id='nav-links' className="nav nav-pills nav-fill nav-link" to="/HomePage" active>Home</Link>
                 <Link id='nav-links' className=" nav nav-pills nav-fill nav-link" to="/budget">Your Budget</Link>
@@ -85,26 +85,24 @@ function ConnectBank(props) {
         <>
             <NavBar {...props} />
             {props.accessToken ? null : (
-               <>
-                <Alert className="mb-2" variant ="success">
-                  <B.Alert.Heading>Start by Connecting Your Account</B.Alert.Heading>
-                  <p>Click "Connect to Bank" to securely link your bank account to our budget app! </p>
-                </Alert>
-                
-                <B.Button variant="primary" onClick={props.open}>Connect to Bank</B.Button>
-               </>
+                <>
+                    <Alert className="mb-2" variant="success">
+                        <B.Alert.Heading>Start by Connecting Your Account</B.Alert.Heading>
+                        <p>Click "Connect to Bank" to securely link your bank account to our budget app! </p>
+                    </Alert>
+
+                    <B.Button variant="primary" onClick={props.open}>Connect to Bank</B.Button>
+                </>
             )}
             {props.accessToken ? (
                 <>
                     {props.balance ? (
                         <SpendingPage {...props}/>
                     ) : null}
-                    
-                    
-                    
+
 
                 </>
-            ) : null }
+            ) : null}
         </>
     );
 };
@@ -113,15 +111,14 @@ function Home(props) {
     console.log("Running Home()");
     return (
         <>
-          
-            <div> 
+
+            <div>
                 <NavBar {...props}/>
-                <HomePage />
+                <HomePage/>
 
             </div>
 
-            
-              
+
         </>
     );
 }
@@ -180,8 +177,8 @@ function App() {
         }
     }, [accessToken]);
 
-    const [startDate, setStartDate] = useState(null);
-    const [endDate, setEndDate] = useState(null);
+    const [startDate, setStartDate] = useState("2022-04-01");
+    const [endDate, setEndDate] = useState("2022-06-01");
     const [transactions, setTransactions] = useState(null);
     const getTransactionsFunction = () => {
         if (accessToken) {
@@ -226,6 +223,7 @@ function App() {
 
                 />}/>
                 <Route exact path="/SpendingPage" element={<ConnectBank
+                    // open={open}
                     accessToken={accessToken}
                     balance={balance}
                     getTransactionsFunction={getTransactionsFunction}
