@@ -1,5 +1,8 @@
 import React, {useContext} from 'react';
-import {Card, Row, Col, Container} from 'react-bootstrap';
+import {Card, Row, Col, Container, Button, Form} from 'react-bootstrap';
+import { LineChar, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart,
+  Pie,
+  Cell, } from 'recharts';
 // import '../BudgetPage.css'
 
 function totalSum(balance, transactions) {
@@ -77,16 +80,15 @@ function totalSum(balance, transactions) {
                     
                     <div className="col-sm" id="budget-col">
                         <div className='alert alert-success'>
-                                <span className='my-4 col-sm'> Remaining in Checking Account: ${totsum} </span>
+                                <span className='my-4 col-sm'> Remaining in Checking Account: ${totsum.toFixed(2)} </span>
                         </div>
                     </div>
               
                     <div className='col-sm' id="remaining-col">
                         <div className='alert alert-danger'>
-                                <span className='my-4 col-sm'> Total Spent from Checking Account: ${moneySpent} </span>
+                                <span className='my-4 col-sm'> Total Spent from Checking Account: ${moneySpent.toFixed(2)} </span>
                         </div>
                     </div>
-                    <h1> {travelsum}</h1>
               
                     </div>         
 
@@ -100,13 +102,74 @@ function totalSum(balance, transactions) {
   
 };
 
+
+
+
 const BudgetList = (props) =>{
-  
+  let travelBudget = 900;
+  let shopBudget = 200;
+  let foodBudget = 300;
+  let funBudget = 100;
+  let totalBudget = travelBudget + shopBudget + foodBudget + funBudget;
+
+  const data2 = [
+    {name: 'Travel', value: travelBudget},
+    {name: 'Groceries', value: shopBudget},
+    {name: 'Food', value: foodBudget},
+    {name: 'Leisure', value: funBudget},
+];
+
+
+const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042',];
+const RADIAN = Math.PI / 180;
+const renderCustomizedLabel = ({cx, cy, midAngle, innerRadius, outerRadius, percent, index}) => {
+    const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+    const x = cx + radius * Math.cos(-midAngle * RADIAN);
+    const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+    return (
+        <text x={x} y={y} fill="white" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
+            {`${(percent * 100).toFixed(0)}%`}
+        </text>
+    );
+};
+
+
       return(
     <div>
+      <Container className='py-5' id='new-user container'>
+                <h1 className='fw-bold'>Let's start saving!</h1>
+                <p className='col-md-8'>
+                    We reccomend following the 50/30/20 rule when budgeting: 50% for necesseties, 30% for wants, and 20% just in case
+                </p>
+                
+            </Container>
         <h4 className="content-align-center" id="getCategoryTotals" >
            {totalSum(props.balance, props.transactions)}
         </h4>
+
+          <div id='spending-pie'>
+                    <ResponsiveContainer  width="95%" aspect={5}>
+                        <PieChart width={60} height={80}>
+                            <Pie
+                                data={data2}
+                                cx="50%"
+                                cy="50%"
+                                labelLine={false}
+                                label={renderCustomizedLabel}
+                                outerRadius={150}
+                                fill="#8884d8"
+                                dataKey="value"
+                            >
+                                {data2.map((entry, index) => (
+                                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]}/>
+                                ))}
+                            </Pie>
+                        </PieChart>
+                                </ResponsiveContainer>
+
+
+                                </div>
 
 
       <div className="container-fluid">
@@ -117,13 +180,32 @@ const BudgetList = (props) =>{
                 <Row id="budgetRow">
                   <Col>
                     <span className="h6 text-muted text-sm d-block mb-2">$$ Travel Budget</span>
-                    <span className="h3 font-bold mb-0">$900</span>
+                    <span className="h3 font-bold mb-0">${travelBudget}</span>
                   </Col>
                   <Col className="col-auto">
                     <i className="bi bi-compass-fill" id="bi-cons" fill="pink" style={{ fontSize: 50 }} > 
                     </i>
                   </Col>
                 </Row>
+                <Card.Footer>
+                  <div>
+                    
+                    <Form>
+                      <Row>
+                        <Col>
+                          <Form.Control placeholder="Enter Amount" />
+                        </Col>
+                        <Col>
+                          <Button className="btn btn" size="sm" variant='info'>
+                            <h6 id='budget-card-footers'>Edit Travel Budget</h6>
+                          </Button>
+                        </Col>
+                      </Row>
+                    </Form>
+
+                    </div>
+                  
+                </Card.Footer>
               </Card.Body>
             </Card>
             
@@ -134,7 +216,7 @@ const BudgetList = (props) =>{
                 <Row id="budgetRow">
                   <Col>
                     <span className="h6 text-muted text-sm d-block mb-2">$$ Grocery Budget</span>
-                    <span className="h3 font-bold mb-0">$100</span>
+                    <span className="h3 font-bold mb-0">${shopBudget}</span>
                   </Col>
                   <Col className="col-auto">
                     <i className="bi bi-cart-fill" id="bi-cons" fill="pink" style={{ fontSize: 50 }} > 
@@ -151,7 +233,7 @@ const BudgetList = (props) =>{
                 <Row id="budgetRow">
                   <Col>
                     <span className="h6 text-muted text-sm d-block mb-2">$$ Food Budget</span>
-                    <span className="h3 font-bold mb-0">$150</span>
+                    <span className="h3 font-bold mb-0">${foodBudget}</span>
                   </Col>
                   <Col className="col-auto">
                     <i className="bi bi-handbag-fill" id="bi-cons" fill="pink" style={{ fontSize: 50 }} > 
@@ -168,7 +250,7 @@ const BudgetList = (props) =>{
                 <Row id="budgetRow">
                   <Col>
                     <span className="h6 text-muted text-sm d-block mb-2">$$ Leisure Budget</span>
-                    <span className="h3 font-bold mb-0">$200</span>
+                    <span className="h3 font-bold mb-0">${funBudget}</span>
                   </Col>
                   <Col className="col-auto">
                     <i className="bi bi-camera-fill" id="bi-cons" fill="pink" style={{ fontSize: 50 }} > 
@@ -181,6 +263,10 @@ const BudgetList = (props) =>{
           </div>
         </div>
       </div>
+      <br></br>
+      <footer className="footerHP">
+                    <p>Copyrights @ GREEN POCKET</p>
+                </footer>
 </div>
 
     );
