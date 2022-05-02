@@ -1,4 +1,4 @@
-import '../spendingpage.css';
+import './spendingpage.css';
 import * as B from 'react-bootstrap';
 import { LineChar, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart,
     Pie,
@@ -191,7 +191,7 @@ function bara (props) {
             </h4>
                 
                 <div  id='spending-barr'>
-                <ResponsiveContainer className='content-align-center' aspect=1.52}>
+                <ResponsiveContainer className='content-align-center' aspect={1.52}>
                         <BarChart
                             width={250}
                             height={80}
@@ -272,10 +272,7 @@ function bara (props) {
         </div> 
 
     }
-            <br></br>
-         <footer className="footerHP">
-                    <p>Copyrights @ GREEN POCKET</p>
-        </footer>
+
         </div>
     );
 }
