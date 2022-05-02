@@ -339,3 +339,13 @@
     height: 40px;
     width: 40px;
 }
+#budget-pie {
+  
+    background-color: hsl(0, 0%, 100%);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+  
+  }
