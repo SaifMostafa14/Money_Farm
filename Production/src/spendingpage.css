@@ -19,12 +19,12 @@
 }
 
 #spending-pie {
-    margin-top: 110px;
-    border: #000000 solid;
-    background-color: rgb(58, 56, 56);
-    width: 80%;
-    margin-left: 150px;
-    border-radius: 30px;
+  background-color: hsl(0, 0%, 100%);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
 
 }
 
