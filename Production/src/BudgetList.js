@@ -189,25 +189,6 @@ const renderCustomizedLabel = ({cx, cy, midAngle, innerRadius, outerRadius, perc
                     </i>
                   </Col>
                 </Row>
-                <Card.Footer>
-                  <div>
-                    
-                    <Form>
-                      <Row>
-                        <Col>
-                          <Form.Control placeholder="Enter Amount" />
-                        </Col>
-                        <Col>
-                          <Button className="btn btn" size="sm" variant='info'>
-                            <h6 id='budget-card-footers'>Edit Travel Budget</h6>
-                          </Button>
-                        </Col>
-                      </Row>
-                    </Form>
-
-                    </div>
-                  
-                </Card.Footer>
               </Card.Body>
             </Card>
             
