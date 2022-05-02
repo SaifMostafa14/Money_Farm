@@ -11,8 +11,6 @@ export default function HomePage() {
             <header className='headerHP' >
      <nav className='navigationHP'>
          {/*<link rel="stylesheet" href=""/>*/}
-        <a className='linkHP' href="/budget">Budget summary</a>
-        <a className='linkHP' href="/connect_bank">Spending summary</a>
      </nav>
     </header>
 
