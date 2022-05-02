@@ -2,27 +2,36 @@
 
 import React, {useState} from 'react'
 import {Link} from "react-router-dom";
+import axios from "axios";
 // import './App.css';
 
 export default function LoginPage({Login, error}) {
+    const [email, setemail] = useState("");
+    const [pass, setpass] = useState("");
+
+    const login = () => {
+        axios.get('http://localhost:9999/api/login', {
+            email: email,
+            pass: pass,
+        }).then((response) => response.json());
+    };
 
     return (<>
         <body className='login-body'>
         <div className="container" id="loginpage-container">
             <div className="form-container log-in-container">
                 <form className="form-tag">
-                    {/*<form action="#" onSubmit={(e) => {*/}
-                    {/*    e.preventDefault();*/}
-                    {/*    axios.post*/}
-                    {/*}}>*/}
                     <h1 id='login-h1'>Login</h1>
                     <div className="input-field">
-                        <input className='input-tag' type="email" placeholder="Email"/>
-                        <input className='input-tag' type="password" placeholder="Password"/>
+                        <input className='input-tag' type="email" placeholder="Email" onChange={(e) => {
+                            setemail(e.target.value);
+                        }}/>
+                        <input className='input-tag' type="password" placeholder="Password" onChange={(e) => {
+                            setpass(e.target.value);
+                        }}/>
                     </div>
-
                     <Link to="/HomePage">
-                        <button className="button-tag" id="loginbtn">Log In</button>
+                        <button className="button-tag" id="loginbtn" onClick={login}>Log In</button>
                     </Link>
                     <span>-----------OR-----------</span>
                     <div className="social-container">
@@ -41,7 +50,6 @@ export default function LoginPage({Login, error}) {
                             <div className="text w-100">
                                 <h2 className='h2-tag'>Welcome to GreenPocket</h2>
                                 <p id="p-signup">Don't have an account?</p>
-                                {/*<Link to="/SignupPage" className="btn" id="btn-signup">Sign Up</Link>*/}
                                 <Link to="/SignupPage">
                                     <button className="button-tag" id="btn-signup">Sign Up</button>
                                 </Link>
