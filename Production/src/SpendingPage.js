@@ -112,13 +112,13 @@ function totalSum(balance, transactions) {
           <div className="row mt-3" id="budget-functions">
                   <div className="row mt-3" id="budget-functions">
                             
-                            <div className="col-sm" id="budget-col">
+                            <div className="col-sm" id="spending-col">
                                 <div className='alert alert-primary'>
                                         <span className='m'> Checking Account Balance: ${checkingBal} </span>
                                 </div>
                             </div>
                       
-                            <div className='col-sm' id="remaining-col">
+                            <div className='col-sm' id="spending-col">
                                 <div className='alert alert-primary '>
                                         <span className='col-sm'> Savings Account Balance: ${savingBal} </span>
                                 </div>
@@ -190,29 +190,32 @@ function bara (props) {
                 {totalSum(props.balance, props.transactions)}
             </h4>
                 
-                <div className='content-align-center' id='spending-barr'>
-                <ResponsiveContainer className='content-align-center' aspect={1.52}>
-                        <BarChart
-                            width={250}
-                            height={80}
-                            data={enterData()}
-                            margin={{
-                                top: 5,
-                                right: 30,
-                                left: 20,
-                                bottom: 5,
-                            }}
-                            barSize={20}
-                        >
-                            <XAxis dataKey="name" scale="point" padding={{left: 10, right: 10}}/>
-                            <YAxis/>
-                            <Tooltip/>
-                            <Legend/>
-                            <CartesianGrid strokeDasharray="3 3"/>
-                            <Bar dataKey="Total" fill="green" background={{fill: 'gray'}}/>
-                        </BarChart>
-                    </ResponsiveContainer>
-                        </div>
+                <div  className="d-flex" id='spending-table-div'>
+                        <Container style={{ width: '60rem' }}>
+                            <ResponsiveContainer  id='responsive-container' aspect={2}>
+                                <BarChart className='content-align-center'
+                                    width={250}
+                                    height={100}
+                                    data={enterData()}
+                                    margin={{
+                                        top: 5,
+                                        right: 30,
+                                        left: 30,
+                                        bottom: 5,
+                                    }}
+                                    barSize={20}
+                                >
+                                    <XAxis dataKey="name" scale="point" padding={{left: 40, right: 40}}/>
+                                    <YAxis/>
+                                    <Tooltip/>
+                                    <Legend/>
+                                    <CartesianGrid strokeDasharray="3 3"/>
+                                    <Bar dataKey="Total" fill="green" background={{fill: 'gray'}}/>
+                                </BarChart>
+                            </ResponsiveContainer>
+                        </Container>
+                    
+                    </div>
             
             <div id='spending-table-div'>
                 <Container className='col-12 col-lg-8 col-xxl-9 d-flex my-4' id='spending-table'>
