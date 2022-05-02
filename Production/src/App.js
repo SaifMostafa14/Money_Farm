@@ -58,13 +58,18 @@ function NavBar() {
 
     return (
 
-        <Navbar bg="dark" variant="dark" className='nav justify-content-center'>
+        <Navbar  variant="dark" className='nav justify-content-center' id='navbar-custom'>
             <Container className=''>
-                <Navbar.Brand>GreenPocket</Navbar.Brand>
+                <Navbar.Brand href="/connect_bank">
+                
+                    <i className="bi bi-wallet2" id="bi-cons" fill="pink" style={{ fontSize: 30}} > 
+                    </i>
+                  
+                   GreenPocket</Navbar.Brand>
 
-                <Link className=" nav nav-pills nav-fill nav-link" to="/budget">Budget</Link>
-                <Link className="nav nav-pills nav-fill nav-link" to="/connect_bank">Conect Bank</Link>
-                <Link className="nav nav-pills nav-fill nav-link" to="/SpendingPage">Spending</Link>
+                <Link id='nav-links' className="nav nav-pills nav-fill nav-link" to="/HomePage" active>Home</Link>
+                <Link id='nav-links' className=" nav nav-pills nav-fill nav-link" to="/budget">Your Budget</Link>
+                <Link id='nav-links' className="nav nav-pills nav-fill nav-link" to="/SpendingPage">Your Spending</Link>
 
             </Container>
         </Navbar>
@@ -79,43 +84,44 @@ function ConnectBank(props) {
     return (
         <>
             <NavBar {...props} />
-            <Alert className="mb-2" variant="success">
-                <B.Alert.Heading>Start by Connecting Your Account</B.Alert.Heading>
-                <p>Click "Connect to Bank" to securely link your bank account to our budget app! </p>
-            </Alert>
-            <B.Button variant="primary" onClick={props.open}>Connect to Bank</B.Button>
+            {props.accessToken ? null : (
+               <>
+                <Alert className="mb-2" variant ="success">
+                  <B.Alert.Heading>Start by Connecting Your Account</B.Alert.Heading>
+                  <p>Click "Connect to Bank" to securely link your bank account to our budget app! </p>
+                </Alert>
+                
+                <B.Button variant="primary" onClick={props.open}>Connect to Bank</B.Button>
+               </>
+            )}
             {props.accessToken ? (
                 <>
-                    <B.Form.Control type="date" name='start_date' value={props.startDate}
-                                    onChange={e => props.setStartDate(e.target.value)}/>
-                    <B.Form.Control type="date" name='end_date' value={props.endDate}
-                                    onChange={e => props.setEndDate(e.target.value)}/>
-
-                    <B.Button variant="secondary" onClick={props.getTransactionsFunction}>Get Transactions</B.Button>
                     {props.balance ? (
-                        <SpendingList {...props}/>
+                        <SpendingPage {...props}/>
                     ) : null}
+                    
+                    
+                    
 
                 </>
-            ) : null}
+            ) : null }
         </>
     );
 };
 
-function Spending(props) {
-    console.log("Running Budget()");
+function Home(props) {
+    console.log("Running Home()");
     return (
         <>
-            <NavBar {...props}/>
+          
+            <div> 
+                <NavBar {...props}/>
+                <HomePage />
 
-            {props.balance ? (
+            </div>
 
-                <div className="col-sm" id="budget-col">
-
-
-                    <SpendingPage {...props}/>
-                </div>
-            ) : null}
+            
+              
         </>
     );
 }
@@ -195,7 +201,7 @@ function App() {
                 <Route exact path="/" element={<LandingPage/>}/>
                 <Route exact path="/LoginPage" element={<LoginPage/>}/>
                 <Route exact path="/SignupPage" element={<SignupPage/>}/>
-                <Route exact path="/HomePage" element={<HomePage/>}/>
+                <Route exact path="/HomePage" element={<Home/>}/>
                 {/*<Route exact path="/PlaidApp" element={<PlaidApp/>}/>*/}
                 {/*<Route exact path="/SpendingPage" element={<SpendingPage/>}/>*/}
                 {/*<Route exact path="/BudgetList" element={<BudgetList/>}/>*/}
@@ -219,7 +225,7 @@ function App() {
                     endDateRef={endDate} setEndDate={setEndDate}
 
                 />}/>
-                <Route exact path="/SpendingPage" element={<SpendingPage
+                <Route exact path="/SpendingPage" element={<ConnectBank
                     accessToken={accessToken}
                     balance={balance}
                     getTransactionsFunction={getTransactionsFunction}
