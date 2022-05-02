@@ -15,6 +15,14 @@
 /*    background-color: #20bf55;*/
 /*    background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);*/
 /*}*/
+#nav-links{
+    color: rgb(255, 255, 255);
+    
+}
+
+#navbar-custom{
+    background-color: #25cf6cc7;
+}
 #landing-body {
     height: 100vh;
     width: 98.89vw;
