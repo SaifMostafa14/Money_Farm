@@ -223,7 +223,7 @@ function App() {
 
                 />}/>
                 <Route exact path="/SpendingPage" element={<ConnectBank
-                    // open={open}
+                    open={open}
                     accessToken={accessToken}
                     balance={balance}
                     getTransactionsFunction={getTransactionsFunction}

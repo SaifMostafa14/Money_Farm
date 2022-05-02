@@ -45,7 +45,7 @@ export default function SignupPage({Login, error}) {
                             setpass(e.target.value);
                         }}/>
                     </div>
-                    <Link to="/SignupPage">
+                    <Link to="/HomePage">
                         <button className="button-tag" id="signup-btn" onClick={signup}>Sign Up</button>
                     </Link>
                 </form>

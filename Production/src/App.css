@@ -74,12 +74,11 @@
     align-items: center;
     flex-direction: column;
     font-family: 'Montserrat', sans-serif;
-    height: 100vh;
+    height: 102vh;
     margin: -20px 0 50px;
 }
 
 .signup-body {
-    height: 120vh;
     width: 98.89vw;
     background: #f3e0e2;
     display: flex;
@@ -87,7 +86,7 @@
     align-items: center;
     flex-direction: column;
     font-family: 'Montserrat', sans-serif;
-    height: 100vh;
+    height: 105vh;
     margin: -20px 0 50px;
 }
 
