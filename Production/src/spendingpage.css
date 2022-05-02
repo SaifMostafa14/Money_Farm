@@ -9,6 +9,10 @@
     margin-left: 225px;
 }
 
+#spending-col{
+  text-align: center;
+}
+
 #spending-barr {
 
     margin-top: 50px;
@@ -23,15 +27,6 @@
 
 }
 
-#spending-pie {
-  background-color: hsl(0, 0%, 100%);
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 30px;
-
-}
 
 #spending-card {
     background-color: #262e27;
