@@ -80,13 +80,13 @@ function totalSum(balance, transactions) {
                     
                     <div className="col-sm" id="budget-col">
                         <div className='alert alert-success'>
-                                <span className='my-4 col-sm'> Remaining in Checking Account: ${totsum.toFixed(2)} </span>
+                                <span className='my-4 col-sm'> Remaining in Budget: ${totsum.toFixed(2)} </span>
                         </div>
                     </div>
               
                     <div className='col-sm' id="remaining-col">
                         <div className='alert alert-danger'>
-                                <span className='my-4 col-sm'> Total Spent from Checking Account: ${moneySpent.toFixed(2)} </span>
+                                <span className='my-4 col-sm'> Total Spent from Budget: ${moneySpent.toFixed(2)} </span>
                         </div>
                     </div>
               
@@ -120,7 +120,7 @@ const BudgetList = (props) =>{
 ];
 
 
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042',];
+const COLORS = ['#daa520', '#f08080', '#6495ed', '	#48d1cc',];
 const RADIAN = Math.PI / 180;
 const renderCustomizedLabel = ({cx, cy, midAngle, innerRadius, outerRadius, percent, index}) => {
     const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
@@ -148,8 +148,9 @@ const renderCustomizedLabel = ({cx, cy, midAngle, innerRadius, outerRadius, perc
            {totalSum(props.balance, props.transactions)}
         </h4>
 
-          <div id='spending-pie'>
-                    <ResponsiveContainer  width="95%" aspect={5}>
+          <div id='budget-pie'>
+            <Container>
+                    <ResponsiveContainer  width="95%" aspect={3}>
                         <PieChart width={60} height={80}>
                             <Pie
                                 data={data2}
@@ -157,7 +158,7 @@ const renderCustomizedLabel = ({cx, cy, midAngle, innerRadius, outerRadius, perc
                                 cy="50%"
                                 labelLine={false}
                                 label={renderCustomizedLabel}
-                                outerRadius={150}
+                                outerRadius={170}
                                 fill="#8884d8"
                                 dataKey="value"
                             >
@@ -166,7 +167,8 @@ const renderCustomizedLabel = ({cx, cy, midAngle, innerRadius, outerRadius, perc
                                 ))}
                             </Pie>
                         </PieChart>
-                                </ResponsiveContainer>
+                      </ResponsiveContainer>
+              </Container>
 
 
                                 </div>
@@ -183,7 +185,7 @@ const renderCustomizedLabel = ({cx, cy, midAngle, innerRadius, outerRadius, perc
                     <span className="h3 font-bold mb-0">${travelBudget}</span>
                   </Col>
                   <Col className="col-auto">
-                    <i className="bi bi-compass-fill" id="bi-cons" fill="pink" style={{ fontSize: 50 }} > 
+                    <i className="bi bi-compass-fill" id="bi-cons" fill="pink" style={{ fontSize: 50, color:'goldenrod' }} > 
                     </i>
                   </Col>
                 </Row>
@@ -219,7 +221,7 @@ const renderCustomizedLabel = ({cx, cy, midAngle, innerRadius, outerRadius, perc
                     <span className="h3 font-bold mb-0">${shopBudget}</span>
                   </Col>
                   <Col className="col-auto">
-                    <i className="bi bi-cart-fill" id="bi-cons" fill="pink" style={{ fontSize: 50 }} > 
+                    <i className="bi bi-cart-fill" id="bi-cons" fill="pink" style={{ fontSize: 50, color: '	lightcoral' }} > 
                     </i>
                   </Col>
                 </Row>
@@ -236,7 +238,7 @@ const renderCustomizedLabel = ({cx, cy, midAngle, innerRadius, outerRadius, perc
                     <span className="h3 font-bold mb-0">${foodBudget}</span>
                   </Col>
                   <Col className="col-auto">
-                    <i className="bi bi-handbag-fill" id="bi-cons" fill="pink" style={{ fontSize: 50 }} > 
+                    <i className="bi bi-handbag-fill" id="bi-cons" fill="pink" style={{ fontSize: 50, color: '	cornflowerblue' }}> 
                     </i>
                   </Col>
                 </Row>
@@ -253,7 +255,7 @@ const renderCustomizedLabel = ({cx, cy, midAngle, innerRadius, outerRadius, perc
                     <span className="h3 font-bold mb-0">${funBudget}</span>
                   </Col>
                   <Col className="col-auto">
-                    <i className="bi bi-camera-fill" id="bi-cons" fill="pink" style={{ fontSize: 50 }} > 
+                    <i className="bi bi-camera-fill" id="bi-cons" fill="pink" style={{ fontSize: 50, color: 'mediumturquoise' }}> 
                     </i>
                   </Col>
                 </Row>
@@ -263,10 +265,7 @@ const renderCustomizedLabel = ({cx, cy, midAngle, innerRadius, outerRadius, perc
           </div>
         </div>
       </div>
-      <br></br>
-      <footer className="footerHP">
-                    <p>Copyrights @ GREEN POCKET</p>
-                </footer>
+      
 </div>
 
     );
