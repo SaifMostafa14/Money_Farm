@@ -40,7 +40,7 @@ export default function HomePage() {
                             </div>
                             <div className="infoHP">
                                 <h3>Budget summary</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras massa justo, blandit vel ultricies in, condimentum at quam. Praesent vestibulum vulputate nisi eget consequat. Phasellus imperdiet, sapien vel consectetur posuere, sapien nisi eleifend arcu, vel sagittis ex tortor a ante.</p>
+                                <p>The Budget Summary includes budgeted amounts, encumbrances, transaction totals, and budget balances.</p>
                                 <a href="/budget" className="buttonHP">Check budget ></a>
 
                             </div>
@@ -51,7 +51,7 @@ export default function HomePage() {
                             </div>
                             <div className="infoHP">
                                 <h3>Spending summary</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras massa justo, blandit vel ultricies in, condimentum at quam. Praesent vestibulum vulputate nisi eget consequat. Phasellus imperdiet, sapien vel consectetur posuere, sapien nisi eleifend arcu, vel sagittis ex tortor a ante.</p>
+                                <p>The Spending Summary shows the amount of money spent and remaining for authorized services.</p>
                                 <a href="/connect_bank" className="buttonHP">Check spending ></a>
 
                             </div>
