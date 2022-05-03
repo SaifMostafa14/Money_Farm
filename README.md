@@ -1,4 +1,6 @@
-#Green Pocket
+#Green Pocket 
+
+-- Final project is stored in the Projection folder--
 
 For the backend we are using Java Script (JS.NODE)
 For the frondend we are using React
