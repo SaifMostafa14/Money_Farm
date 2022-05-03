@@ -9,7 +9,6 @@
 * Creating a budget.
 * Keeping track of income and expenses.
 * Creating categories for spending.
-* Reward system either offers or coupouns.
 * Push notifications (email or text.)
 * Data visualization.
 
@@ -18,7 +17,7 @@
 
 ### Developers:
 * Abdullah Alsubhi || Landing - Signup - Login
-*  Nkosi || 
+*  Nkosi || Budget - Spending - Plaid API Integration
 * Saif Mostafa
 * Abdulaziz Alzhriny
 * Mohammed Almutiary
@@ -28,3 +27,7 @@
 * [Bootstrap](https://getbootstrap.com/docs)
 * [fontawesome](https://fontawesome.com/)
 * [w3codepen](https://w3codepen.com)
+* [react-bootstrap](https://react-bootstrap.github.io/components/navbar/)
+* [recharts - pie chart](https://recharts.org/en-US/examples/PieChartWithCustomizedLabel)
+* [recharts - bar chart](https://recharts.org/en-US/examples/BarChartNoPadding)
+
