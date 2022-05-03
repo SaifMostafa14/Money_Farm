@@ -17,7 +17,7 @@
 
 ### Developers:
 * Abdullah Alsubhi || Landing - Signup - Login
-*  Nkosi || Budget - Spending - Plaid API Integration
+*  Nkosi Watts || Budget - Spending - Plaid API Integration
 * Saif Mostafa
 * Abdulaziz Alzhriny
 * Mohammed Almutiary
